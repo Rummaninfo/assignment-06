@@ -24,7 +24,7 @@ let categoryDisplay = (category)=>{
 
   divContainer.addEventListener('click', function(e){
     let allBtn= document.querySelectorAll('button')
-    console.log(allBtn)
+    
     for(let btn of allBtn){
         btn.classList.remove('bg-[#15803D]', 'text-white')
     }
@@ -54,7 +54,7 @@ let all_trees_display = (allTreeDisplay)=>{
     allCard.innerHTML = ''
     console.log(allCard.innerText)
     allTreeDisplay.map(trees =>{
-        console.log(trees.name)
+        
         let div_container = document.createElement('div')
         
         div_container.innerHTML = `
@@ -75,7 +75,7 @@ let all_trees_display = (allTreeDisplay)=>{
       <div  class="px-4 py-1 bg-[#DCFCE7] text-[#15803D] text-base rounded-3xl">${trees.category}</div>
       <div class="text-xl font-medium">৳<span>${trees.price}</span></div>
     </div>
-    <div class="pt-2"><button class="w-full bg-[#15803D] py-2  text-white text-xl rounded-3xl">Add to cart</button></div>
+    <div class="pt-2"><button id="alllcard" class="w-full bg-[#15803D] py-2  text-white text-xl rounded-3xl">Add to cart</button></div>
   </div>
              </div>
         
@@ -98,7 +98,7 @@ let Card = (card)=>{
     let appendDiv = document.getElementById("all_card_container")
     appendDiv.innerHTML = ''
  for(let cards of card){
-    console.log(cards)
+    
      let createDiv = document.createElement('div')
      createDiv.innerHTML = `
      <div class="card bg-base-100  shadow-sm p-4">
@@ -122,7 +122,7 @@ let Card = (card)=>{
       </div>
       <div class="text-xl font-medium">৳<span>${cards.price}</span></div>
     </div>
-    <div class="pt-2"><button class="w-full bg-[#15803D] py-2  text-white text-xl rounded-3xl">Add to cart</button></div>
+    <div  class="pt-2"><button onclick="getCart('${encodeURIComponent(JSON.stringify(cards))}')"" class="w-full bg-[#15803D] py-2  text-white text-xl rounded-3xl add-to-cart">Add to cart</button></div>
   </div>
              </div>
         
@@ -168,9 +168,41 @@ let categoryFruit = (fruits,price,description,img,name)=>{
    document.getElementById("my_modal_5").showModal()
 }
 
+// your cart
+
+function getCart(e) {
+  const item = JSON.parse(decodeURIComponent(e));
+  console.log('Cart item:', item.name);
+  
+  let cartDiv = document.getElementById('youCart')
+  let createDiv = document.createElement("div")
+  createDiv.classList.add('flex','items-center', 'justify-between','px-5','py-2','mx-2','bg-green-100','rounded-xl')
+  createDiv.innerHTML =`
+  
+  <div class='font-medium'>
+<h3>${item.name} </h3>
+<h3>${item.price} </h3>
+  
+  </div>
+  <div id="cross">❌</div>
+  
+  
+  
+  
+  `
+  cartDiv.appendChild(createDiv)
+  let totalPrice = document.getElementById("totalPrice").innerText
+  let totalPriceConvert = parseInt(totalPrice)
+
+  let price = item.price
+  
+  let plus = totalPriceConvert + price
+
+document.getElementById("totalPrice").innerText = plus
 
 
 
+}
 
 categoryData()
 All_Trees()
