@@ -54,25 +54,25 @@ let all_trees_display = (allTreeDisplay)=>{
     allCard.innerHTML = ''
     console.log(allCard.innerText)
     allTreeDisplay.map(trees =>{
-        
+        console.log(trees.name)
         let div_container = document.createElement('div')
         
         div_container.innerHTML = `
         
-        <div class="card bg-base-100  shadow-sm p-4">
+        <div  class="card bg-base-100  shadow-sm p-4 mx-4 mt-3 md:mx-0 mt-0 ">
   <figure class="">
     <img class="rounded-lg w-full h-52 object-cover"
       src="${trees.image}"
       alt="Shoes" />
   </figure>
   <div class="card-body">
-    <h2 class="card-title">
+    <h2 onclick="categoryFruit('${trees.category}', '${trees.price}','${trees.description}', '${trees.image}','${trees.name}')" class="card-title">
       
       Mango Tree
     </h2>
     <p>${trees.description.slice(1,85)}</p>
     <div class="flex justify-between items-center">
-      <div class="px-4 py-1 bg-[#DCFCE7] text-[#15803D] text-base rounded-3xl">${trees.category}</div>
+      <div  class="px-4 py-1 bg-[#DCFCE7] text-[#15803D] text-base rounded-3xl">${trees.category}</div>
       <div class="text-xl font-medium">৳<span>${trees.price}</span></div>
     </div>
     <div class="pt-2"><button class="w-full bg-[#15803D] py-2  text-white text-xl rounded-3xl">Add to cart</button></div>
@@ -98,7 +98,7 @@ let Card = (card)=>{
     let appendDiv = document.getElementById("all_card_container")
     appendDiv.innerHTML = ''
  for(let cards of card){
-    
+    console.log(cards)
      let createDiv = document.createElement('div')
      createDiv.innerHTML = `
      <div class="card bg-base-100  shadow-sm p-4">
@@ -108,13 +108,18 @@ let Card = (card)=>{
       alt="Shoes" />
   </figure>
   <div class="card-body">
-    <h2 class="card-title">
+    <h2 onclick="categoryFruit('${cards.category}', '${cards.price}','${cards.description}', '${cards.image}','${cards.name}')" class="card-title">
       
       ${cards.name}
     </h2>
     <p>${cards.description.slice(1,85)}</p>
     <div class="flex justify-between items-center">
-      <div class="px-4 py-1 bg-[#DCFCE7] text-[#15803D] text-base rounded-3xl">${cards.category}</div>
+      
+      <div  class="px-4 py-1 bg-[#DCFCE7] text-[#15803D] text-base rounded-3xl">
+
+      ${cards.category}
+      
+      </div>
       <div class="text-xl font-medium">৳<span>${cards.price}</span></div>
     </div>
     <div class="pt-2"><button class="w-full bg-[#15803D] py-2  text-white text-xl rounded-3xl">Add to cart</button></div>
@@ -126,6 +131,45 @@ let Card = (card)=>{
      appendDiv.appendChild(createDiv)
  }
 }
+
+// fruit click show modal
+
+let categoryFruit = (fruits,price,description,img,name)=>{
+
+    
+    let head = document.getElementById("head")
+    head.innerText = name
+
+    let img_des = document.getElementById("img_des")
+    img_des.src = `${img}`
+
+    let modal_category = document.getElementById("modal_category")
+    modal_category.innerText = fruits
+
+    let modal_price = document.getElementById("modal_price")
+    modal_price.innerText = price
+
+    let modal_describe = document.getElementById('modal_describe')
+    modal_describe.innerText = description
+
+
+    
+    let modals = document.getElementById("modal")
+    let makeDiv = document.createElement("div")
+   makeDiv.innerHTML  =
+   `
+   <button class="btn hidden" onclick="my_modal_5.showModal()"></button>
+  
+
+
+
+   `
+   modals.appendChild(makeDiv)
+   document.getElementById("my_modal_5").showModal()
+}
+
+
+
 
 
 categoryData()

@@ -72,7 +72,7 @@ generations</p>
  <section class="w-[97%] mx-auto mt-20   ">
             <!-- card div -->
              <h2 class="text-center text-3xl font-semibold">Choose Your Trees</h2>
-             <div class="grid grid-cols-1 md:grid-cols-12  mt-6   ">
+             <div class="grid grid-cols-1  md:grid-cols-12 mt-6   ">
                   <!-- list -->
                 <div class="border-2 py-10 col-span-2">
                  <h3 class="font-medium text-2xl">Categories</h3>
@@ -108,9 +108,74 @@ generations</p>
 
              </div>
  </section>
+<!-- modal show -->
+<section>
+
+<div id="modal">
+
+</div>
+<!-- modal -->
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box space-y-1">
+    <h3 id="head" class="text-lg font-bold"></h3>
+    <img class="rounded-lg w-full h-52 object-cover" id="img_des" src="" alt="">
+    <h3 class="pt-1" > <span class="font-semibold">Category: </span> <span id="modal_category"></span></h3>
+    <h2>  <span class="font-semibold">Price: </span> <span id="modal_price"></span>  </h2>
+    <p  class="py-2"><span class="font-semibold">Describe: </span><span id="modal_describe"></span></p>
+
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+</section>
+
+ <section class="mt-12 py-10 border-2">
+    <h2 class="text-center text-3xl font-semibold">About the Campaign</h2>
+           <div class="md:flex items-center justify-center gap-4 space-y-2 mt-8">
+                <div><img src="assets/about.png" alt=""></div>
+                <div class="px-4 text-center md:px-0 md:text-left">
+                  <p class="font-normal">Green Earth is a global tree plantation initiative dedicated to fighting <br> climate change. Since our start, we’ve planted over 500,000 trees worldwide. <br> By joining our campaign, you help restore forests, <br> create habitats for wildlife, and combat global warming.</p>
+                  
+                 <ul>
+                  <li>Restoration of natural habitats</li>
+                 </ul>
+
+                </div>
+                
+           </div>
+   </section>
+
+<section class="bg-[#CFF0DC] py-20">
+     <h3 class="text-center font-semibold text-3xl">Our Impact</h3>
+       
+     <div class=" px-10 text-center space-y-4 md:flex justify-around mt-6 md:space-y-2">
+      <div class="px-24 py-6 bg-white rounded-xl"> <h3 class="text-[#15803D] font-medium text-center">500K+</h3> <p>Trees Planted</p> </div>
+      <div class="px-24 py-6 bg-white rounded-xl"> <h3 class="text-[#15803D] font-medium text-center">120+</h3> <p>Communities Involved</p> </div>
+      <div class="px-24 py-6 bg-white rounded-xl"> <h3 class="text-[#15803D] font-medium text-center">30+</h3> <p>Countries Reached</p> </div>
+      
+      
+      
+      
+     </div>
+
+
+    </section>
 
 
    </main>
+<!-- footer seciton -->
+  <footer class="mt-20">
+   
+    
+
+
+
+  </footer>
 
 <script src="scribt.js"></script>
 </body>
