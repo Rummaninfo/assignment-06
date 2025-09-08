@@ -1,0 +1,119 @@
+let categoryData = ()=>{
+    let url = `https://openapi.programming-hero.com/api/categories`
+    fetch(url)
+    .then(res => res.json())
+    .then(Data => categoryDisplay(Data.categories))
+}
+
+
+let categoryDisplay = (category)=>{
+    
+    let categoryConatainer = document.getElementById("categorys")
+   category.map(singleCategory =>{
+       
+    
+    let divContainer = document.createElement('div')
+    divContainer.classList.add("pt-2")
+    divContainer.innerHTML  =`
+    
+    <button onclick ="singleCard('${singleCategory.id}')"  class="text-xl font-normal  w-full text-left hover:bg-[#15803D] py-1  hover:text-white pl-2 rounded-md font-medium">${singleCategory.category_name}</button>
+    
+
+
+
+    `
+    categoryConatainer.appendChild(divContainer)
+   })
+}
+
+
+let All_Trees = ()=>{
+  
+  let all_tree_url = `https://openapi.programming-hero.com/api/plants`  
+  fetch(all_tree_url)
+  .then(res => res.json())
+  .then(data =>all_trees_display(data.plants))
+
+}
+ 
+
+let all_trees_display = (allTreeDisplay)=>{
+    let allCard = document.getElementById("all_card_container")
+    allCard.innerHTML = ''
+    allTreeDisplay.map(trees =>{
+        
+        let div_container = document.createElement('div')
+        
+        div_container.innerHTML = `
+        
+        <div class="card bg-base-100  shadow-sm p-4">
+  <figure class="">
+    <img class="rounded-lg w-full h-52 object-cover"
+      src="${trees.image}"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      
+      Mango Tree
+    </h2>
+    <p>${trees.description.slice(1,85)}</p>
+    <div class="flex justify-between items-center">
+      <div class="px-4 py-1 bg-[#DCFCE7] text-[#15803D] text-base rounded-3xl">${trees.category}</div>
+      <div class="text-xl font-medium">৳<span>${trees.price}</span></div>
+    </div>
+    <div class="pt-2"><button class="w-full bg-[#15803D] py-2  text-white text-xl rounded-3xl">Add to cart</button></div>
+  </div>
+             </div>
+        
+        
+        `
+        allCard.appendChild(div_container)
+    })
+}
+
+
+let singleCard = (id)=>{
+    let url = `https://openapi.programming-hero.com/api/category/${id}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => Card(data.plants))
+}
+let Card = (card)=>{
+    let appendDiv = document.getElementById("all_card_container")
+    appendDiv.innerHTML = ''
+ for(let cards of card){
+    console.log(cards)
+     let createDiv = document.createElement('div')
+     createDiv.innerHTML = `
+     <div class="card bg-base-100  shadow-sm p-4">
+  <figure class="">
+    <img class="rounded-lg w-full h-52 object-cover"
+      src="${cards.image}"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      
+      ${cards.name}
+    </h2>
+    <p>${cards.description.slice(1,85)}</p>
+    <div class="flex justify-between items-center">
+      <div class="px-4 py-1 bg-[#DCFCE7] text-[#15803D] text-base rounded-3xl">${cards.category}</div>
+      <div class="text-xl font-medium">৳<span>${cards.price}</span></div>
+    </div>
+    <div class="pt-2"><button class="w-full bg-[#15803D] py-2  text-white text-xl rounded-3xl">Add to cart</button></div>
+  </div>
+             </div>
+        
+     
+     `
+     appendDiv.appendChild(createDiv)
+ }
+}
+
+
+categoryData()
+All_Trees()
+
+
