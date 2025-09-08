@@ -10,19 +10,30 @@ let categoryDisplay = (category)=>{
     
     let categoryConatainer = document.getElementById("categorys")
    category.map(singleCategory =>{
+    
        
     
     let divContainer = document.createElement('div')
     divContainer.classList.add("pt-2")
     divContainer.innerHTML  =`
     
-    <button onclick ="singleCard('${singleCategory.id}')"  class="text-xl font-normal  w-full text-left hover:bg-[#15803D] py-1  hover:text-white pl-2 rounded-md font-medium">${singleCategory.category_name}</button>
-    
-
-
-
+    <button onclick ="singleCard('${singleCategory.id}')"  class="text-xl   w-full text-left  py-1   pl-2 rounded-md font-normal">${singleCategory.category_name}</button>
+   
     `
     categoryConatainer.appendChild(divContainer)
+
+  divContainer.addEventListener('click', function(e){
+    let allBtn= document.querySelectorAll('button')
+    console.log(allBtn)
+    for(let btn of allBtn){
+        btn.classList.remove('bg-[#15803D]', 'text-white')
+    }
+   if(e.target.localName === 'button'){
+    
+    e.target.classList.add('bg-[#15803D]', 'text-white')
+   }
+  })
+
    })
 }
 
@@ -39,7 +50,9 @@ let All_Trees = ()=>{
 
 let all_trees_display = (allTreeDisplay)=>{
     let allCard = document.getElementById("all_card_container")
+    
     allCard.innerHTML = ''
+    console.log(allCard.innerText)
     allTreeDisplay.map(trees =>{
         
         let div_container = document.createElement('div')
@@ -74,16 +87,18 @@ let all_trees_display = (allTreeDisplay)=>{
 
 
 let singleCard = (id)=>{
+      
     let url = `https://openapi.programming-hero.com/api/category/${id}`
     fetch(url)
     .then(res => res.json())
     .then(data => Card(data.plants))
 }
 let Card = (card)=>{
+    
     let appendDiv = document.getElementById("all_card_container")
     appendDiv.innerHTML = ''
  for(let cards of card){
-    console.log(cards)
+    
      let createDiv = document.createElement('div')
      createDiv.innerHTML = `
      <div class="card bg-base-100  shadow-sm p-4">
