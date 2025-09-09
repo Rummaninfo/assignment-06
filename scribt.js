@@ -54,6 +54,7 @@ let all_trees_display = (allTreeDisplay)=>{
     allCard.innerHTML = ''
     console.log(allCard.innerText)
     allTreeDisplay.map(trees =>{
+      
         
         let div_container = document.createElement('div')
         
@@ -75,13 +76,14 @@ let all_trees_display = (allTreeDisplay)=>{
       <div  class="px-4 py-1 bg-[#DCFCE7] text-[#15803D] text-base rounded-3xl">${trees.category}</div>
       <div class="text-xl font-medium">৳<span>${trees.price}</span></div>
     </div>
-    <div class="pt-2"><button id="alllcard" class="w-full bg-[#15803D] py-2  text-white text-xl rounded-3xl">Add to cart</button></div>
+    <div class="pt-2"><button onclick="getCart('${encodeURIComponent(JSON.stringify(trees))}')" class="w-full bg-[#15803D] py-2  text-white text-xl rounded-3xl">Add to cart</button></div>
   </div>
              </div>
         
         
         `
         allCard.appendChild(div_container)
+        
     })
 }
 
@@ -171,8 +173,10 @@ let categoryFruit = (fruits,price,description,img,name)=>{
 // your cart
 
 function getCart(e) {
+  
   const item = JSON.parse(decodeURIComponent(e));
-  console.log('Cart item:', item.name);
+  
+ 
   
   let cartDiv = document.getElementById('youCart')
   let createDiv = document.createElement("div")
@@ -184,7 +188,7 @@ function getCart(e) {
 <h3>${item.price} </h3>
   
   </div>
-  <div id="cross">❌</div>
+  <div class="cross">❌</div>
   
   
   
@@ -195,10 +199,29 @@ function getCart(e) {
   let totalPriceConvert = parseInt(totalPrice)
 
   let price = item.price
+ 
   
   let plus = totalPriceConvert + price
 
 document.getElementById("totalPrice").innerText = plus
+
+let cros = document.querySelectorAll(".cross")
+
+for(let btn of cros){
+  let number = btn.parentNode.childNodes[1].childNodes[3].innerText
+  let numbers = parseInt(number)
+  btn.addEventListener('click', function(){
+    console.log(btn, 'mil geya')
+    btn.parentNode.remove()
+    // let minus = plus - numbers
+    // console.log(minus)
+let minus = document.getElementById("totalPrice").innerText
+let convert = parseInt(minus)
+let minuss = convert - numbers
+document.getElementById("totalPrice").innerText = minuss
+      
+  })
+}
 
 
 
