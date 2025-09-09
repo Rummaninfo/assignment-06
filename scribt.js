@@ -7,7 +7,7 @@ let categoryData = ()=>{
 
 
 let categoryDisplay = (category)=>{
-    
+  
     let categoryConatainer = document.getElementById("categorys")
    category.map(singleCategory =>{
     
@@ -20,6 +20,9 @@ let categoryDisplay = (category)=>{
     <button onclick ="singleCard('${singleCategory.id}')"  class="text-xl   w-full text-left  py-1   pl-2 rounded-md font-normal">${singleCategory.category_name}</button>
    
     `
+  
+
+
     categoryConatainer.appendChild(divContainer)
 
   divContainer.addEventListener('click', function(e){
@@ -89,14 +92,16 @@ let all_trees_display = (allTreeDisplay)=>{
 
 
 let singleCard = (id)=>{
-      
+
+    spinner()
+
     let url = `https://openapi.programming-hero.com/api/category/${id}`
     fetch(url)
     .then(res => res.json())
     .then(data => Card(data.plants))
 }
 let Card = (card)=>{
-    
+     
     let appendDiv = document.getElementById("all_card_container")
     appendDiv.innerHTML = ''
  for(let cards of card){
@@ -130,6 +135,7 @@ let Card = (card)=>{
         
      
      `
+     
      appendDiv.appendChild(createDiv)
  }
 }
@@ -174,9 +180,12 @@ let categoryFruit = (fruits,price,description,img,name)=>{
 
 function getCart(e) {
   
-  const item = JSON.parse(decodeURIComponent(e));
   
  
+  const item = JSON.parse(decodeURIComponent(e));
+  
+ console.log(item)
+ alert(`${item.name} has been added to the cart.`)
   
   let cartDiv = document.getElementById('youCart')
   let createDiv = document.createElement("div")
@@ -194,6 +203,7 @@ function getCart(e) {
   
   
   `
+ 
   cartDiv.appendChild(createDiv)
   let totalPrice = document.getElementById("totalPrice").innerText
   let totalPriceConvert = parseInt(totalPrice)
@@ -226,6 +236,27 @@ document.getElementById("totalPrice").innerText = minuss
 
 
 }
+
+
+  let spinner = ()=>{
+    let div = document.getElementById("all_card_container")
+    div.innerHTML = `
+                                 <                             <section class="text-center" id="spinnerLoad">
+<span class="loading loading-dots loading-xs"></span>
+<span class="loading loading-dots loading-sm"></span>
+<span class="loading loading-dots loading-md"></span>
+<span class="loading loading-dots loading-lg"></span>
+<span class="loading loading-dots loading-xl"></span>
+
+</section>
+    `
+    
+  }
+ 
+
+
+
+
 
 categoryData()
 All_Trees()
