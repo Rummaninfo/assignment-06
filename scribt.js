@@ -108,7 +108,7 @@ let Card = (card)=>{
     
      let createDiv = document.createElement('div')
      createDiv.innerHTML = `
-     <div class="card bg-base-100  shadow-sm p-4">
+     <div class="card bg-base-100 shadow-sm p-4">
   <figure class="">
     <img class="rounded-lg w-full h-52 object-cover"
       src="${cards.image}"
@@ -122,7 +122,7 @@ let Card = (card)=>{
     <p>${cards.description.slice(1,85)}</p>
     <div class="flex justify-between items-center">
       
-      <div  class="px-4 py-1 bg-[#DCFCE7] text-[#15803D] text-base rounded-3xl">
+      <div  class="px-2 py-1 bg-[#DCFCE7] text-[#15803D] text-base rounded-3xl">
 
       ${cards.category}
       
@@ -194,7 +194,7 @@ function getCart(e) {
   
   <div class='font-medium'>
 <h3>${item.name} </h3>
-<h3>${item.price} </h3>
+<h3>৳${item.price} </h3>
   
   </div>
   <div class="cross">❌</div>
@@ -212,27 +212,15 @@ function getCart(e) {
  
   
   let plus = totalPriceConvert + price
-
+// 
 document.getElementById("totalPrice").innerText = plus
 
-let cros = document.querySelectorAll(".cross")
 
-for(let btn of cros){
-  let number = btn.parentNode.childNodes[1].childNodes[3].innerText
-  let numbers = parseInt(number)
-  btn.addEventListener('click', function(){
-    console.log(btn, 'mil geya')
-    btn.parentNode.remove()
-    // let minus = plus - numbers
-    // console.log(minus)
-let minus = document.getElementById("totalPrice").innerText
-let convert = parseInt(minus)
-let minuss = convert - numbers
-document.getElementById("totalPrice").innerText = minuss
-      
-  })
-}
-
+createDiv.querySelector('.cross').onclick = () => {
+  createDiv.remove();
+  const totalPrice = document.getElementById('totalPrice');
+  totalPrice.innerText = (Number(totalPrice.innerText)) - (Number(item.price));
+};
 
 
 }

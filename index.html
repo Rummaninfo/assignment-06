@@ -27,7 +27,7 @@
         <li><a>Plant a Tree</a></li>
       </ul>
     </div>
-    <a class=" text-xl text-white">Green & Earth</a>
+    <a class=" text-xl text-white font-medium">Green & Earth</a>
   </div>
   <div class="navbar-center hidden lg:flex text-white">
     <ul class="menu menu-horizontal px-1">
@@ -51,7 +51,10 @@
    <main class="bg-[#F0FDF4]">
      <div class="bg-[#CFF0DC] py-4 px-4  md:flex justify-between md:py-0 md:px-0  items-center">
         
-        <div><img class="hidden md:block"  src="assets/hero-leaf1.png" alt=""></div>
+        
+          <div><img class=" hidden md:block"  src="assets/hero-leaf1.png" alt=""></div>
+        
+         
         <div class="text-center space-y-2 ">
             <h2 class="font-bold text-3xl md:text-4xl">Plant a Tree, Grow a Future</h2>
             <p class="opacity-60">Join our mission to plant 1 million trees and make the Earth greener for future <br>
@@ -78,7 +81,7 @@ generations</p>
  <section class="w-[97%] mx-auto mt-20">
             <!-- card div -->
              <h2 class="text-center text-3xl font-semibold">Choose Your Trees</h2>
-             <div class="grid grid-cols-1  md:grid-cols-12 mt-6   ">
+             <div class="grid grid-cols-1  md:grid-cols-12 mt-6  gap-0 md:gap-6  ">
                   <!-- list -->
                 <div class="py-10 col-span-2">
                  <h3 class="font-medium text-2xl">Categories</h3>
@@ -94,7 +97,7 @@ generations</p>
 
 
 
-                <div id="all_card_container" class="py-10 col-span-8 grid-cols-1 md:grid grid-cols-3 gap-3 items-center">
+                <div id="all_card_container" class="py-10 col-span-8 grid-cols-1 space-y-2 md:space-y-0 md:grid grid-cols-3 gap-3 items-center">
 
                 
                              <section class="text-center mx-auto" id="spinnerLoad">
@@ -115,14 +118,14 @@ generations</p>
 
 
 
-                <div  class="py-10 col-span-2 ">
+                <div  class="py-8 col-span-2 mt-12 bg-white ">
                   <h3 class="text-center font-medium text-3xl">Your Cart</h3>
-                  <div class="space-y-2 mt-4" id="youCart">
+                  <div class="space-y-2 mt-4  py-8" id="youCart">
 
                   </div>
-                    <div class="flex justify-between px-8 mt-4">
-                      <h3  class="">Total </h3>
-                      <h3  class=""><span id="totalPrice">0</span> </h3>
+                    <div class=" text-right font-semibold px-8 ">
+                      <h3  class="">Total: ৳ <span id="totalPrice">0</span> </h3>
+                      
                     </div>
                 </div>
                 
@@ -159,15 +162,17 @@ generations</p>
 
 </section>
 
- <section class="mt-12 py-10 border-2">
+ <section class="mt-12 py-14 ">
     <h2 class="text-center text-3xl font-semibold">About the Campaign</h2>
            <div class="md:flex items-center justify-center gap-4 space-y-2 mt-8">
                 <div><img src="assets/about.png" alt=""></div>
-                <div class="px-4 text-center md:px-0 md:text-left">
+                <div class="px-4 pt-4 text-center md:px-0  md:text-left">
                   <p class="font-normal">Green Earth is a global tree plantation initiative dedicated to fighting <br> climate change. Since our start, we’ve planted over 500,000 trees worldwide. <br> By joining our campaign, you help restore forests, <br> create habitats for wildlife, and combat global warming.</p>
                   
-                 <ul>
-                  <li>Restoration of natural habitats</li>
+                 <ul class="list-disc pl-10 pt-6 md:pl-8 md:pt-4">
+                  <li >Restoration of natural habitats</li>
+                  <li>Improvement of air quality</li>
+                  <li>Support for local communities</li>
                  </ul>
 
                 </div>
@@ -217,7 +222,7 @@ generations</p>
 </select>
 
 <div class="w-full">
-    <a  class="btn w-full md:w-[60%] bg-[#FACC15] text-green-800 rounded-3xl">Plant a Tree</a> <br>
+    <a  class="btn w-full md:w-[60%] bg-[#FACC15] text-green-800 rounded-3xl">Donate Now</a> <br>
     </div>
       </form>
     
@@ -226,7 +231,9 @@ generations</p>
     
 
 
-
+<section class="bg-[#14532D] py-7">
+  <p class="text-center text-white">© 2025 Green Earth. All Rights Reserved.</p>
+</section>
 
 
   </footer>
